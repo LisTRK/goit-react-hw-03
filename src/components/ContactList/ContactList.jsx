@@ -1,26 +1,15 @@
-import { ImUser } from 'react-icons/im';
-import { AiFillPhone } from 'react-icons/ai';
+import Contact from '../Contact/Contact';
 import css from './ContactList.module.css';
 
 export default function ContactList({ contacts, onDeleteContact }) {
-  const renderContacstList = contacts.map(({ id, name, number }) => (
-    <li className={css.card} key={id}>
-      <div className={css.cardData}>
-        <h3>
-          <ImUser />
-          {name}
-        </h3>
-        <p>
-          <AiFillPhone />
-          {number}
-        </p>
-      </div>
-      <button type="button" onClick={() => onDeleteContact(id)}>
-        Delete
-      </button>
-    </li>
-  ));
-
+  const renderContacstList = contacts.map((contact) => {
+    return (
+      <li key={contact.id} className={css.card}>
+        <Contact contact={contact} onDeleteContact={onDeleteContact} />
+        <p>{contact.id}</p>
+      </li>
+    );
+  });
   return (
     <ul className={css.list}>
       {renderContacstList.length !== 0 ? (

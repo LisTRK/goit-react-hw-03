@@ -3,7 +3,7 @@ import 'modern-normalize';
 import { useState, useEffect, useMemo, useId } from 'react';
 import { useDebounce } from 'use-debounce';
 import ContactList from '../ContactList/ContactList';
-import contactsData from '../Contact/Contact.json';
+import contactsData from '../ContactData/ContactData.json';
 import SearchBox from '../SearchBox/SearchBox';
 import ContactsForm from '../ContactForm/ContactForm';
 
@@ -12,7 +12,6 @@ function App() {
     return JSON.parse(localStorage.getItem('save-contacts')) ?? contactsData;
   });
   const [inputValue, setInputValue] = useState('');
-  // const [valueForm, setValueForm] = useState();
   const [debounceValue] = useDebounce(inputValue, 400);
 
   const deleteContact = (contactId) => {
